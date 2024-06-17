@@ -192,6 +192,16 @@ net_protocol_queue_pop(struct net_protocol *proto)
 {
 }
 
+static struct net_protocol_queue_entry *
+net_protocol_queue_push(struct net_protocol *proto, const uint8_t *data, size_t len, struct net_device *dev)
+{
+}
+
+static struct net_protocol_queue_entry *
+net_protocol_queue_pop(struct net_protocol *proto)
+{
+}
+
 int
 net_input(uint16_t type, const uint8_t *data, size_t len, struct net_device *dev)
 {
@@ -211,6 +221,11 @@ net_input(uint16_t type, const uint8_t *data, size_t len, struct net_device *dev
 
 <<<<<<< HEAD
 =======
+void
+net_softirq_handler(unsigned int irq, void *arg)
+{
+}
+
 void
 net_softirq_handler(unsigned int irq, void *arg)
 {
