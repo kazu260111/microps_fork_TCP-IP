@@ -54,7 +54,12 @@ cleanup(void)
 static int
 app_main(void)
 {
-    return 0;
+	debugf("press Ctrl+C to terminate");
+	while (!terminate) {
+		sleep(1);
+	}
+	debugf("terminate");
+       	return 0;
 }
 
 int

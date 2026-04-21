@@ -1,0 +1,42 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-W",
+      "-Wall",
+      "-Wno-unused-parameter",
+      "-iquote",
+      ".",
+      "-iquote",
+      "./platform/linux",
+      "-c",
+      "-o",
+      "test/test.o",
+      "test/test.c"
+    ],
+    "directory": "/home/kazuki-ogura/git_study/TCP_IP_fork/microps_fork_TCP-IP",
+    "file": "/home/kazuki-ogura/git_study/TCP_IP_fork/microps_fork_TCP-IP/test/test.c",
+    "output": "/home/kazuki-ogura/git_study/TCP_IP_fork/microps_fork_TCP-IP/test/test.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-g",
+      "-W",
+      "-Wall",
+      "-Wno-unused-parameter",
+      "-iquote",
+      ".",
+      "-iquote",
+      "./platform/linux",
+      "-c",
+      "-o",
+      "net.o",
+      "net.c"
+    ],
+    "directory": "/home/kazuki-ogura/git_study/TCP_IP_fork/microps_fork_TCP-IP",
+    "file": "/home/kazuki-ogura/git_study/TCP_IP_fork/microps_fork_TCP-IP/net.c",
+    "output": "/home/kazuki-ogura/git_study/TCP_IP_fork/microps_fork_TCP-IP/net.o"
+  }
+]
