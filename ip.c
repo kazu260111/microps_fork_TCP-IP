@@ -86,8 +86,41 @@ ip_print(const uint8_t *data, size_t len)
 static void
 ip_input(const uint8_t *data, size_t len, struct net_device *dev)
 {
+	struct ip_hdr *hdr;
+	uint8_t v;
+	uint16_t hlen, total, offset;
+
 	debugf("dev=%s, len=%zu", dev->name, len);
-	debugdump(data, len);
+	if (len < IP_HDR_SIZE_MIN) {
+		errorf("too short");
+		return;
+	}
+	hdr = (struct ip_hdr *) data;
+	v = hdr->vhl >> 4;
+	if (v != IP_VERSION_IPV4) {
+		errorf("ip version error: v=%u", v);
+		return;
+	}
+	hlen = (hdr->vhl & 0x0f) << 2;
+	if (len < hlen) {
+		errorf("header length error: len=%zu < hlen=%u", len, hlen);
+		return;
+	}
+	if (cksum16((uint16_t *)hdr, hlen, 0) != 0) {
+		errorf("checksum error");
+		return;
+	}
+	total = ntoh16(hdr->total);
+	if (len < total) {
+		errorf("total length error: len=%zu < total=%u", len, total);
+		return;
+	}
+	offset = ntoh16(hdr->offset);
+	if (offset & IP_HDR_FLAG_MF || offset & IP_HDR_OFFSET_MASK) {
+		errorf("fragments do not support");
+		return;
+	}
+	ip_print(data, total);
 }
 
 int
