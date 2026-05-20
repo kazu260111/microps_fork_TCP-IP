@@ -9,8 +9,8 @@
 #include "net.h"
 #include "ether.h"
 
-const uint8_t ETHER_ADDR_ANY[ETHER_ADDR_LEN] = {"\x00\x00\x00\x00\x00\x00"};
-const uint8_t ETHER_ADDR_BROADCAST[ETHER_ADDR_LEN] = {"\xff\xff\xff\xff\xff\xff"};
+const uint8_t ETHER_ADDR_ANY[ETHER_ADDR_LEN] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+const uint8_t ETHER_ADDR_BROADCAST[ETHER_ADDR_LEN] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 
 int
 ether_addr_pton(const char *p, uint8_t *n)

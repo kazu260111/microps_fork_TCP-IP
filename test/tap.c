@@ -53,6 +53,7 @@ main(int argc, char *argv[])
 			return -1;
 		}
 		debugf("receive %zd bytes data", n);
+		ether_print(buf, n);
 	}
 	close(fd);
 	return 0;
