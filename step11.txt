@@ -1,0 +1,53 @@
+19:09:55.588 [I] setup: setup protocol stack... (test/test.c:36)
+19:09:55.588 [I] net_init: initialize... (net.c:196)
+19:09:55.588 [I] net_protocol_register: success, type=0x0800 (net.c:172)
+19:09:55.588 [I] ip_protocol_register: success, protocol=1 (ip.c:155)
+19:09:55.588 [I] net_init: success (net.c:209)
+19:09:55.588 [I] net_device_register: success, dev=net0, type=0x0001 (net.c:50)
+19:09:55.588 [I] loopback_init: success, dev=net0 (driver/loopback.c:42)
+19:09:55.588 [I] ip_iface_register: dev=net0, 127.0.0.1, 255.0.0.0, 127.255.255.255 (ip.c:106)
+19:09:55.588 [I] net_device_add_iface: success, dev=net0 (net.c:133)
+19:09:55.588 [I] ether_tap_init: name=tap0, addr=00:00:5e:00:53:01 (platform/linux/driver/ether_tap.c:206)
+19:09:55.588 [I] net_device_register: success, dev=net1, type=0x0000 (net.c:50)
+19:09:55.588 [I] intr_register: success, irq=35 (platform/linux/intr.c:53)
+19:09:55.588 [I] ether_tap_init: success, dev=net1, irq=35 (platform/linux/driver/ether_tap.c:231)
+19:09:55.588 [I] ip_iface_register: dev=net1, 192.0.2.2, 255.255.255.0, 192.0.2.255 (ip.c:106)
+19:09:55.588 [I] net_device_add_iface: success, dev=net1 (net.c:133)
+19:09:55.588 [I] net_run: startup... (net.c:218)
+19:09:55.588 [I] intr_main: start... (platform/linux/intr.c:69)
+19:09:55.589 [I] net_device_open: dev=net1 (net.c:57)
+19:09:55.591 [I] ether_tap_open: dev=net1, addr=76:a7:3d:a5:47:aa (platform/linux/driver/ether_tap.c:109)
+19:09:55.591 [I] net_device_open: dev=net0 (net.c:57)
+19:09:55.591 [I] net_run: success (net.c:226)
+19:09:55.591 [D] app_main: press Ctrl+C to terminate (test/test.c:90)
+19:09:55.592 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:09:55.853 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:09:56.421 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:10:04.416 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:10:09.954 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:10:09.954 [D] ether_tap_input: dev=net1, type=0x0806, len=42 (platform/linux/driver/ether_tap.c:163)
+	src: 76:a7:3d:a5:47:aa
+	dst: ff:ff:ff:ff:ff:ff
+	type: 0x0806
+19:10:09.954 [D] net_input: dev=net1, type=0x0806, len=28 (net.c:181)
+19:10:10.986 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:10:10.986 [D] ether_tap_input: dev=net1, type=0x0806, len=42 (platform/linux/driver/ether_tap.c:163)
+	src: 76:a7:3d:a5:47:aa
+	dst: ff:ff:ff:ff:ff:ff
+	type: 0x0806
+19:10:10.986 [D] net_input: dev=net1, type=0x0806, len=28 (net.c:181)
+19:10:12.027 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:10:12.027 [D] ether_tap_input: dev=net1, type=0x0806, len=42 (platform/linux/driver/ether_tap.c:163)
+	src: 76:a7:3d:a5:47:aa
+	dst: ff:ff:ff:ff:ff:ff
+	type: 0x0806
+19:10:12.027 [D] net_input: dev=net1, type=0x0806, len=28 (net.c:181)
+19:10:20.427 [D] intr_main: IRQ <35> occurred (platform/linux/intr.c:83)
+19:10:39.759 [D] app_main: terminate (test/test.c:94)
+19:10:39.759 [I] cleanup: cleanup protocol stack... (test/test.c:79)
+19:10:39.759 [I] net_shutdown: shutting down... (net.c:235)
+19:10:39.759 [I] intr_main: terminated (platform/linux/intr.c:96)
+19:10:39.759 [I] net_device_close: dev=net1 (net.c:75)
+19:10:39.760 [I] ether_tap_close: dev=net1 (platform/linux/driver/ether_tap.c:116)
+19:10:39.760 [I] net_device_close: dev=net0 (net.c:75)
+19:10:39.760 [I] net_shutdown: success (net.c:242)

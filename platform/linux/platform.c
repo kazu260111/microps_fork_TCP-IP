@@ -6,25 +6,35 @@
 
 #include "platform.h"
 
+#include "intr.h"
 #include "util.h"
 
 int
 platform_init(void)
 {
-    srandom(time(NULL));
-    return 0;
+	srandom(time(NULL));
+	if (intr_init() == -1) {
+		return -1;
+	}
+	return 0;
 }
 
 int
 platform_run(void)
 {
-    return 0;
+	if (intr_run() == -1) {
+		return -1;
+	}
+       	return 0;
 }
 
 int
 platform_shutdown(void)
 {
-    return 0;
+	if (intr_shutdown() == -1) {
+		return -1;
+	}
+	return 0;
 }
 
 /*
