@@ -209,6 +209,18 @@ ether_tap_init(const char *name, const char *addr)
 		errorf("net_device_alloc() failure");
 		return NULL;
 	}
+	dev->type = NET_DEVICE_TYPE_ETHERNET;
+	dev->mtu = ETHER_PAYLOAD_SIZE_MAX;
+	dev->flags = (NET_DEVICE_FLAG_BROADCAST | NET_DEVICE_FLAG_NEED_ARP);
+	dev->hlen = ETHER_HDR_SIZE;
+	dev->alen = ETHER_ADDR_LEN;
+	memcpy(dev->broadcast, ETHER_ADDR_BROADCAST, ETHER_ADDR_LEN);
+	if (addr) {
+		if (ether_addr_pton(addr, dev->addr) == -1) {
+			errorf("invalid adress, addr=%s", addr);
+			return NULL;
+		}
+	}
 	dev->ops = &ether_tap_ops;
 	tap = memory_alloc(sizeof(*tap));
 	if (!tap) {
