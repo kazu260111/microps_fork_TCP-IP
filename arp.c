@@ -80,10 +80,11 @@ arp_print(const uint8_t *data, size_t len)
 
 	flockfile(stderr);
 	message = (struct arp_ether_ip *)data;
-	fprintf(stderr, "	hdr: 0x%04x\n", ntoh16(message->hdr.hrd));
+	fprintf(stderr, "	hrd: 0x%04x\n", ntoh16(message->hdr.hrd));
 	fprintf(stderr, "	pro: 0x%04x\n", ntoh16(message->hdr.pro));
 	fprintf(stderr, "	hln: %u\n", message->hdr.hln);
 	fprintf(stderr, "	pln: %u\n", message->hdr.pln);
+	fprintf(stderr, "	op: %u (%s)\n", ntoh16(message->hdr.op), arp_opcode_ntoa(message->hdr.op));
 	fprintf(stderr, "	sha: %s\n", ether_addr_ntop(message->sha, addr, sizeof(addr)));
 	memcpy(&spa, message->spa, sizeof(spa));
 	fprintf(stderr, "	spa: %s\n", ip_addr_ntop(spa, addr, sizeof(addr)));
