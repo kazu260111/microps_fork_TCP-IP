@@ -7,6 +7,8 @@
 #include "platform.h"
 
 #include "intr.h"
+#include "sched.h"
+#include "timer.h"
 #include "util.h"
 #include "net.h"
 
@@ -21,6 +23,9 @@ platform_init(void)
 	if (timer_init() == -1) {
 		return -1;
 	}
+	if (sched_init() == -1) {
+		return -1;
+	}
 	return 0;
 }
 
@@ -33,6 +38,9 @@ platform_run(void)
 	if (timer_run() == -1) {
 		return -1;
 	}
+	if (sched_run() == -1) {
+		return -1;
+	}
        	return 0;
 }
 
@@ -43,6 +51,9 @@ platform_shutdown(void)
 		return -1;
 	}
 	if (timer_shutdown() == -1) {
+		return -1;
+	}
+	if (sched_shutdown() == -1) {
 		return -1;
 	}
 	return 0;
